@@ -1,0 +1,28 @@
+{
+  "root": "apps/rick-and-morty-e2e",
+  "sourceRoot": "apps/rick-and-morty-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/rick-and-morty-e2e/cypress.json",
+        "devServerTarget": "rick-and-morty:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "rick-and-morty:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/rick-and-morty-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["rick-and-morty"]
+}

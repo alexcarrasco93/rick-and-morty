@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/rick-and-morty",
+  "sourceRoot": "apps/rick-and-morty/src",
+  "prefix": "rick-and-morty",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/rick-and-morty",
+        "index": "apps/rick-and-morty/src/index.html",
+        "main": "apps/rick-and-morty/src/main.ts",
+        "polyfills": "apps/rick-and-morty/src/polyfills.ts",
+        "tsConfig": "apps/rick-and-morty/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/rick-and-morty/src/favicon.ico",
+          "apps/rick-and-morty/src/assets"
+        ],
+        "styles": ["apps/rick-and-morty/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/rick-and-morty/src/environments/environment.ts",
+              "with": "apps/rick-and-morty/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "rick-and-morty:build:production"
+        },
+        "development": {
+          "browserTarget": "rick-and-morty:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "rick-and-morty:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/rick-and-morty/src/**/*.ts",
+          "apps/rick-and-morty/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/rick-and-morty"],
+      "options": {
+        "jestConfig": "apps/rick-and-morty/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

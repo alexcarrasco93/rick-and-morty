@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "rick-and-morty": "apps/rick-and-morty",
+    "rick-and-morty-e2e": "apps/rick-and-morty-e2e"
+  }
+}
