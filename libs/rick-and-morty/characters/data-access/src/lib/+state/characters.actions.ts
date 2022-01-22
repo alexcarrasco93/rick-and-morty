@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Character } from '@workspace/rick-and-morty/characters/ui-models';
+import { Character, CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
 
 export const eneterCharactersPage = createAction('[Characters Page] Init');
 
@@ -9,6 +9,11 @@ export const loadNextCharacters = createAction(
 
 export const loadPrevCharacters = createAction(
   '[Characters/API] Load Previous Characters'
+);
+
+export const filterCharacters = createAction(
+  '[Characters/API] Filter Characters',
+  props<{ fiters: CharactersFilters }>()
 );
 
 export const loadCharactersSuccess = createAction(
