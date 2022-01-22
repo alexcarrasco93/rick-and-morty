@@ -1,1 +1,3 @@
-<p>characters-list-container works!</p>
+<div *ngIf="charactersViewModel$ | async as charactersViewModel">
+  <workspace-characters-list [characters]="charactersViewModel.characters"></workspace-characters-list>
+</div>
