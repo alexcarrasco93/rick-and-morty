@@ -1,1 +1,19 @@
-<p>character-card works!</p>
+<article class="characterCard__Wrapper">
+  <div class="characterCard__ImgWrapper">
+    <img [src]="character?.image" [alt]="character?.name">
+  </div>
+  <div class="characterCard__ContentWrapper">
+    <div class="section">
+      {{character?.name}}
+      <span class="status"><span class="status__icon"></span> {{character?.status}} - {{character?.species}}</span>
+    </div>
+    <div class="section">
+      <span class="text-gray">Last known location:</span>
+      {{character?.location?.name}}
+    </div>
+    <div class="section">
+      <span class="text-gray">First seen in:</span>
+      {{character?.origin?.name}}
+    </div>
+  </div>
+</article>

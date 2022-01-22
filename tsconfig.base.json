@@ -29,6 +29,9 @@
       ],
       "@workspace/shared/data-access/router": [
         "libs/shared/data-access/router/src/index.ts"
+      ],
+      "@workspace/shared/util/utils-functions": [
+        "libs/shared/util/utils-functions/src/index.ts"
       ]
     }
   },

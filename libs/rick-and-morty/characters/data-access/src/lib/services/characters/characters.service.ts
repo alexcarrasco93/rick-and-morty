@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UtilsFunctions } from '@workspace/shared/util/utils-functions';
+
 import { CharactersResponse } from '../../models/characters-response.model';
 
 @Injectable({
@@ -8,7 +10,11 @@ import { CharactersResponse } from '../../models/characters-response.model';
 export class CharactersService {
   constructor(private http: HttpClient) {}
 
-  getAllCharacters() {
-    return this.http.get<CharactersResponse>('https://rickandmortyapi.com/api/character');
+  getAllCharacters(page = 1) {
+    const params = UtilsFunctions.buildQueryParams({ page });
+    return this.http.get<CharactersResponse>(
+      'https://rickandmortyapi.com/api/character',
+      { params }
+    );
   }
 }

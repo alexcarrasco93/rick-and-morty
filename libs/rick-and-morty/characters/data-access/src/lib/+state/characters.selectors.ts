@@ -1,16 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import {
-  CHARACTERS_FEATURE_KEY,
-  State,
-  charactersAdapter,
-} from './characters.reducer';
+import { CHARACTERS_FEATURE_KEY, State } from './characters.reducer';
 
 // Lookup the 'Characters' feature state managed by NgRx
 export const getCharactersState = createFeatureSelector<State>(
   CHARACTERS_FEATURE_KEY
 );
-
-const { selectAll, selectEntities } = charactersAdapter.getSelectors();
 
 export const getCharactersLoaded = createSelector(
   getCharactersState,
@@ -24,23 +18,12 @@ export const getCharactersError = createSelector(
 
 export const getAllCharacters = createSelector(
   getCharactersState,
-  (state: State) => selectAll(state)
+  (state: State) => state.characters
 );
 
-export const getCharactersEntities = createSelector(
+export const getPage = createSelector(
   getCharactersState,
-  (state: State) => selectEntities(state)
-);
-
-export const getSelectedId = createSelector(
-  getCharactersState,
-  (state: State) => state.selectedId
-);
-
-export const getSelected = createSelector(
-  getCharactersEntities,
-  getSelectedId,
-  (entities, selectedId) => (selectedId ? entities[selectedId] : undefined)
+  (state: State) => state.page
 );
 
 export const charactersViewModel = createSelector(

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '@workspace/rick-and-morty/characters/ui-models';
 
 @Component({
@@ -6,11 +6,21 @@ import { Character } from '@workspace/rick-and-morty/characters/ui-models';
   templateUrl: './characters-list.component.html',
   styleUrls: ['./characters-list.component.scss'],
 })
-export class CharactersListComponent implements OnInit {
+export class CharactersListComponent {
   @Input()
   characters: Character[] = [];
 
-  ngOnInit(): void {
-    console.log(this.characters);
+  @Output()
+  next = new EventEmitter<unknown>();
+
+  @Output()
+  prev = new EventEmitter<unknown>();
+
+  nextPage() {
+    this.next.emit();
+  }
+
+  previousPage() {
+    this.prev.emit();
   }
 }

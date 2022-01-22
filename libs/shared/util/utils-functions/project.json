@@ -1,0 +1,23 @@
+{
+  "root": "libs/shared/util/utils-functions",
+  "sourceRoot": "libs/shared/util/utils-functions/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/shared/util/utils-functions/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/shared/util/utils-functions"],
+      "options": {
+        "jestConfig": "libs/shared/util/utils-functions/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

@@ -6,10 +6,12 @@ import * as CharactersActions from './characters.actions';
 
 export const CHARACTERS_FEATURE_KEY = 'characters';
 
-export interface State extends EntityState<Character> {
-  selectedId?: string | number; // which Characters record has been selected
+export interface State {
   loaded: boolean; // has the Characters list been loaded
   error?: string | null; // last known error (if any)
+  characters: Character[];
+  totalPages: number;
+  page: number;
 }
 
 export interface CharactersPartialState {
@@ -19,10 +21,13 @@ export interface CharactersPartialState {
 export const charactersAdapter: EntityAdapter<Character> =
   createEntityAdapter<Character>();
 
-export const initialState: State = charactersAdapter.getInitialState({
+export const initialState: State = {
   // set initial required properties
   loaded: false,
-});
+  characters: [],
+  page: 1,
+  totalPages: 1,
+};
 
 const charactersReducer = createReducer(
   initialState,
@@ -31,8 +36,24 @@ const charactersReducer = createReducer(
     loaded: false,
     error: null,
   })),
-  on(CharactersActions.loadCharactersSuccess, (state, { characters }) =>
-    charactersAdapter.setAll(characters, { ...state, loaded: true })
+  on(CharactersActions.loadNextCharacters, (state) => ({
+    ...state,
+    loaded: false,
+    page: state.page < state.totalPages ? state.page + 1 : state.page,
+  })),
+  on(CharactersActions.loadPrevCharacters, (state) => ({
+    ...state,
+    loaded: false,
+    page: state.page > 1 ? state.page - 1 : state.page,
+  })),
+  on(
+    CharactersActions.loadCharactersSuccess,
+    (state, { characters, totalPages }) => ({
+      ...state,
+      characters,
+      loaded: true,
+      totalPages,
+    })
   ),
   on(CharactersActions.loadCharactersFailure, (state, { error }) => ({
     ...state,

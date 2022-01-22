@@ -1,3 +1,4 @@
 <div *ngIf="charactersViewModel$ | async as charactersViewModel">
-  <workspace-characters-list [characters]="charactersViewModel.characters"></workspace-characters-list>
+  <workspace-characters-list [characters]="charactersViewModel.characters" (next)="requestNextCharacters()"
+    (prev)="requestPreviousCharacters()"></workspace-characters-list>
 </div>

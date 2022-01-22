@@ -7,6 +7,7 @@
     "rick-and-morty-characters-ui": "libs/rick-and-morty/characters/ui",
     "rick-and-morty-characters-ui-models": "libs/rick-and-morty/characters/ui-models",
     "rick-and-morty-e2e": "apps/rick-and-morty-e2e",
-    "shared-data-access-router": "libs/shared/data-access/router"
+    "shared-data-access-router": "libs/shared/data-access/router",
+    "shared-util-utils-functions": "libs/shared/util/utils-functions"
   }
 }

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CharactersActions, CharactersSelectors } from '@workspace/rick-and-morty/characters/data-access';
+import {
+  CharactersActions,
+  CharactersSelectors,
+} from '@workspace/rick-and-morty/characters/data-access';
 
 @Component({
   selector: 'workspace-characters-list-container',
@@ -8,10 +11,20 @@ import { CharactersActions, CharactersSelectors } from '@workspace/rick-and-mort
   styleUrls: ['./characters-list-container.component.scss'],
 })
 export class CharactersListContainerComponent implements OnInit {
-  charactersViewModel$ = this.store.select(CharactersSelectors.charactersViewModel)
+  charactersViewModel$ = this.store.select(
+    CharactersSelectors.charactersViewModel
+  );
   constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.store.dispatch(CharactersActions.eneterCharactersPage());
+  }
+
+  requestNextCharacters() {
+    this.store.dispatch(CharactersActions.loadNextCharacters());
+  }
+
+  requestPreviousCharacters() {
+    this.store.dispatch(CharactersActions.loadPrevCharacters());
   }
 }
