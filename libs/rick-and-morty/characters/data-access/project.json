@@ -1,0 +1,29 @@
+{
+  "projectType": "library",
+  "root": "libs/rick-and-morty/characters/data-access",
+  "sourceRoot": "libs/rick-and-morty/characters/data-access/src",
+  "prefix": "workspace",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/rick-and-morty/characters/data-access"],
+      "options": {
+        "jestConfig": "libs/rick-and-morty/characters/data-access/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/rick-and-morty/characters/data-access/src/**/*.ts",
+          "libs/rick-and-morty/characters/data-access/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": [
+    "scope:(rick-and-morty|shared)",
+    "type:(feature|data-access|ui|util)"
+  ]
+}

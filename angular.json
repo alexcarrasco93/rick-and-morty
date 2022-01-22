@@ -2,6 +2,9 @@
   "version": 2,
   "projects": {
     "rick-and-morty": "apps/rick-and-morty",
+    "rick-and-morty-characters-data-access": "libs/rick-and-morty/characters/data-access",
+    "rick-and-morty-characters-feature": "libs/rick-and-morty/characters/feature",
+    "rick-and-morty-characters-ui": "libs/rick-and-morty/characters/ui",
     "rick-and-morty-e2e": "apps/rick-and-morty-e2e"
   }
 }

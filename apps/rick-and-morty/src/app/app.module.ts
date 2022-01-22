@@ -3,19 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 
 export const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('@workspace/rick-and-morty/characters').then((m) => m.MiGeneraliMainFeatureModule),
+      import('@workspace/rick-and-morty/characters/feature').then(
+        (m) => m.RickAndMortyCharactersFeatureModule
+      ),
   },
   { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),

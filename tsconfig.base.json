@@ -14,7 +14,17 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@workspace/rick-and-morty/characters/data-access": [
+        "libs/rick-and-morty/characters/data-access/src/index.ts"
+      ],
+      "@workspace/rick-and-morty/characters/feature": [
+        "libs/rick-and-morty/characters/feature/src/index.ts"
+      ],
+      "@workspace/rick-and-morty/characters/ui": [
+        "libs/rick-and-morty/characters/ui/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
