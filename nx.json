@@ -1,5 +1,5 @@
 {
-  "npmScope": "rick-and-morty",
+  "npmScope": "workspace",
   "affected": {
     "defaultBase": "main"
   },
@@ -39,7 +39,9 @@
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "tags": "scope:(rick-and-morty|shared),type:(feature|data-access|ui|util)",
+      "standaloneConfig": true
     },
     "@nrwl/angular:component": {
       "style": "scss"
