@@ -5,9 +5,7 @@ import { CharactersListComponent } from './characters-list/characters-list.compo
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [
-    CharacterCardComponent,
-    CharactersListComponent
-  ],
+  declarations: [CharacterCardComponent, CharactersListComponent],
+  exports: [CharactersListComponent],
 })
 export class RickAndMortyCharactersUiModule {}

@@ -23,6 +23,9 @@
       ],
       "@workspace/rick-and-morty/characters/ui": [
         "libs/rick-and-morty/characters/ui/src/index.ts"
+      ],
+      "@workspace/rick-and-morty/characters/ui-models": [
+        "libs/rick-and-morty/characters/ui-models/src/index.ts"
       ]
     }
   },

@@ -1,1 +1,7 @@
-<p>characters-list works!</p>
+<div>
+  <ul>
+    <li *ngFor="let character of characters">
+      <workspace-character-card [character]="character"></workspace-character-card>
+    </li>
+  </ul>
+</div>

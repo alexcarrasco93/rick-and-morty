@@ -1,0 +1,29 @@
+{
+  "projectType": "library",
+  "root": "libs/rick-and-morty/characters/ui-models",
+  "sourceRoot": "libs/rick-and-morty/characters/ui-models/src",
+  "prefix": "workspace",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/rick-and-morty/characters/ui-models"],
+      "options": {
+        "jestConfig": "libs/rick-and-morty/characters/ui-models/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/rick-and-morty/characters/ui-models/src/**/*.ts",
+          "libs/rick-and-morty/characters/ui-models/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": [
+    "scope:(rick-and-morty|shared)",
+    "type:(feature|data-access|ui|util)"
+  ]
+}
