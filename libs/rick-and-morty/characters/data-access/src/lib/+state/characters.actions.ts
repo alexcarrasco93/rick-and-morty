@@ -13,7 +13,7 @@ export const loadPrevCharacters = createAction(
 
 export const filterCharacters = createAction(
   '[Characters/API] Filter Characters',
-  props<{ fiters: CharactersFilters }>()
+  props<{ filters: CharactersFilters }>()
 );
 
 export const loadCharactersSuccess = createAction(

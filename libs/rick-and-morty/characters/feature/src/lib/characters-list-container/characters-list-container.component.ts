@@ -4,6 +4,7 @@ import {
   CharactersActions,
   CharactersSelectors,
 } from '@workspace/rick-and-morty/characters/data-access';
+import { CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
 
 @Component({
   selector: 'workspace-characters-list-container',
@@ -26,5 +27,9 @@ export class CharactersListContainerComponent implements OnInit {
 
   requestPreviousCharacters() {
     this.store.dispatch(CharactersActions.loadPrevCharacters());
+  }
+
+  filterCharacters(filters: CharactersFilters) {
+    this.store.dispatch(CharactersActions.filterCharacters({ filters }));
   }
 }

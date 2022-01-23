@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Character } from '@workspace/rick-and-morty/characters/ui-models';
+import {
+  Character,
+  CharactersFilters,
+} from '@workspace/rick-and-morty/characters/ui-models';
 
 @Component({
   selector: 'workspace-characters-list',
@@ -16,11 +19,18 @@ export class CharactersListComponent {
   @Output()
   prev = new EventEmitter<unknown>();
 
+  @Output()
+  filter = new EventEmitter<CharactersFilters>();
+
   nextPage() {
     this.next.emit();
   }
 
   previousPage() {
     this.prev.emit();
+  }
+
+  filterCharactersByName(name: string) {
+    this.filter.emit({ name });
   }
 }

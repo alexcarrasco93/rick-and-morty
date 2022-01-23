@@ -12,7 +12,7 @@ export class CharactersService {
   constructor(private http: HttpClient) {}
 
   getAllCharacters(page = 1, filters?: CharactersFilters) {
-    const params = UtilsFunctions.buildQueryParams({ page, filters });
+    const params = UtilsFunctions.buildQueryParams({ page, ...filters });
     return this.http.get<CharactersResponse>(
       'https://rickandmortyapi.com/api/character',
       { params }

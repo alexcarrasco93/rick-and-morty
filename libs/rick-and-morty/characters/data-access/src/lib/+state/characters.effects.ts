@@ -72,8 +72,8 @@ export class CharactersEffects {
     this.actions$.pipe(
       ofType(CharactersActions.filterCharacters),
       concatLatestFrom(() => this.store.select(CharactersSelectors.getPage)),
-      exhaustMap(([{ fiters }, page]) =>
-        this.charactersService.getAllCharacters(page, fiters).pipe(
+      exhaustMap(([{ filters }, page]) =>
+        this.charactersService.getAllCharacters(page, filters).pipe(
           map((response) =>
             CharactersActions.loadCharactersSuccess({
               characters: response.results,
