@@ -1,10 +1,10 @@
 <button type="button" (click)="goBackToCharactersList()">Go back to the list</button>
 <ng-container *ngIf="characterDetailViewModel$ | async as characterDetailViewModel">
   <div *ngIf="characterDetailViewModel.character as character; else characterNotFoundTmpl">
-    {{character?.name}} <br>
-    {{character?.status}} <br>
-    {{character?.species}} <br>
-    {{character?.origin?.name}}
+    <b>Name:</b> {{character?.name}} <br>
+    <b>Status:</b> {{character?.status}} <br>
+    <b>Species:</b> {{character?.species}} <br>
+    <b>Origin:</b> {{character?.origin?.name}}
   </div>
   <ng-template #characterNotFoundTmpl>
     <div>
