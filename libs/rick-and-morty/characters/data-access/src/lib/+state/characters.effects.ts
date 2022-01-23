@@ -11,26 +11,7 @@ import * as CharactersActions from './characters.actions';
 export class CharactersEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(CharactersActions.eneterCharactersPage),
-      exhaustMap(() =>
-        this.charactersService.getAllCharacters().pipe(
-          map((response) =>
-            CharactersActions.loadCharactersSuccess({
-              characters: response.results,
-              totalPages: response.info.pages,
-            })
-          ),
-          catchError((error) =>
-            of(CharactersActions.loadCharactersFailure({ error }))
-          )
-        )
-      )
-    )
-  );
-
-  loadNextCharacters$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(CharactersActions.loadNextCharacters),
+      ofType(CharactersActions.eneterCharactersPage, CharactersActions.loadNextCharacters),
       concatLatestFrom(() => this.store.select(CharactersSelectors.getPage)),
       exhaustMap(([, page]) =>
         this.charactersService.getAllCharacters(page).pipe(
