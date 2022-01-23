@@ -1,19 +1,7 @@
-<article class="characterCard__Wrapper">
-  <div class="characterCard__ImgWrapper">
-    <img [src]="character?.image" [alt]="character?.name">
+<div class="card">
+  <img [src]="character?.image" [alt]="character?.name" style="width:100%">
+  <div class="container">
+    <h4><b>{{character?.name}}</b></h4>
+    <p>{{character?.species}}</p>
   </div>
-  <div class="characterCard__ContentWrapper">
-    <div class="section">
-      {{character?.name}}
-      <span class="status"><span class="status__icon"></span> {{character?.status}} - {{character?.species}}</span>
-    </div>
-    <div class="section">
-      <span class="text-gray">Last known location:</span>
-      {{character?.location?.name}}
-    </div>
-    <div class="section">
-      <span class="text-gray">First seen in:</span>
-      {{character?.origin?.name}}
-    </div>
-  </div>
-</article>
+</div>
