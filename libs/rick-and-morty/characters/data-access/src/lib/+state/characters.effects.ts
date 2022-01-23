@@ -88,6 +88,22 @@ export class CharactersEffects {
     )
   );
 
+  getCharacterDetail$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CharactersActions.getCharacterDetail),
+      exhaustMap(({ characterId }) =>
+        this.charactersService.getCharacterDetail(characterId).pipe(
+          map((character) =>
+            CharactersActions.getCharacterDetailSuccess({ character })
+          ),
+          catchError((error) =>
+            of(CharactersActions.getCharacterDetailFailure({ error }))
+          )
+        )
+      )
+    )
+  );
+
   constructor(
     private readonly actions$: Actions,
     private store: Store,

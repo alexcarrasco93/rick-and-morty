@@ -5,6 +5,8 @@ import { RickAndMortyCharactersUiModule } from '@workspace/rick-and-morty/charac
 import { RickAndMortyCharactersDataAccessModule } from '@workspace/rick-and-morty/characters/data-access';
 
 import { CharactersListContainerComponent } from './characters-list-container/characters-list-container.component';
+import { CharacterDetailContainerComponent } from './character-detail-container/character-detail-container.component';
+import { PageNotFoundContainerComponent } from './page-not-found-container/page-not-found-container.component';
 
 @NgModule({
   imports: [
@@ -15,11 +17,22 @@ import { CharactersListContainerComponent } from './characters-list-container/ch
         pathMatch: 'full',
         component: CharactersListContainerComponent,
       },
-      { path: '**', redirectTo: 'characters-list' },
+      {
+        path: 'character-detail/:characterId',
+        pathMatch: 'full',
+        component: CharacterDetailContainerComponent,
+      },
+      {
+        path: 'page-not-found',
+        pathMatch: 'full',
+        component: PageNotFoundContainerComponent,
+      },
+      { path: '', redirectTo: 'characters-list' },
+      { path: '**', redirectTo: 'page-not-found' },
     ]),
     RickAndMortyCharactersUiModule,
     RickAndMortyCharactersDataAccessModule
   ],
-  declarations: [CharactersListContainerComponent],
+  declarations: [CharactersListContainerComponent, CharacterDetailContainerComponent, PageNotFoundContainerComponent],
 })
 export class RickAndMortyCharactersFeatureModule {}

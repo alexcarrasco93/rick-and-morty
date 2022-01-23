@@ -1,5 +1,8 @@
 import { createAction, props } from '@ngrx/store';
-import { Character, CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
+import {
+  Character,
+  CharactersFilters,
+} from '@workspace/rick-and-morty/characters/ui-models';
 
 export const eneterCharactersPage = createAction('[Characters Page] Init');
 
@@ -18,10 +21,25 @@ export const filterCharacters = createAction(
 
 export const loadCharactersSuccess = createAction(
   '[Characters/API] Load Characters Success',
-  props<{ characters: Character[], totalPages: number }>()
+  props<{ characters: Character[]; totalPages: number }>()
 );
 
 export const loadCharactersFailure = createAction(
   '[Characters/API] Load Characters Failure',
+  props<{ error: any }>()
+);
+
+export const getCharacterDetail = createAction(
+  '[Characters/API] Get Character Detail',
+  props<{ characterId: number }>()
+);
+
+export const getCharacterDetailSuccess = createAction(
+  '[Characters/API] Get Character Detail Success',
+  props<{ character: Character }>()
+);
+
+export const getCharacterDetailFailure = createAction(
+  '[Characters/API] Get Character Detail Failure',
   props<{ error: any }>()
 );

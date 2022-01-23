@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import {
   CharactersActions,
@@ -15,7 +16,7 @@ export class CharactersListContainerComponent implements OnInit {
   charactersViewModel$ = this.store.select(
     CharactersSelectors.charactersViewModel
   );
-  constructor(private store: Store) {}
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
     this.store.dispatch(CharactersActions.eneterCharactersPage());
@@ -34,6 +35,6 @@ export class CharactersListContainerComponent implements OnInit {
   }
 
   goToCharacterDetail(characterId: number) {
-    console.log(characterId);
+    this.router.navigate(['/character-detail', characterId])
   }
 }

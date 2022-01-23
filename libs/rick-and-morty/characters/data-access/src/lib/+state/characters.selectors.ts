@@ -32,3 +32,15 @@ export const charactersViewModel = createSelector(
     characters,
   })
 );
+
+export const getCharacterDetail = createSelector(
+  getCharactersState,
+  (state: State) => state.character
+);
+
+export const characterDetailViewModel = createSelector(
+  getCharacterDetail,
+  (character) => ({
+    character,
+  })
+);

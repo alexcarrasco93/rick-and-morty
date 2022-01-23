@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UtilsFunctions } from '@workspace/shared/util/utils-functions';
-import { CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
+import { Character, CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
 
 import { CharactersResponse } from '../../models/characters-response.model';
 
@@ -16,6 +16,12 @@ export class CharactersService {
     return this.http.get<CharactersResponse>(
       'https://rickandmortyapi.com/api/character',
       { params }
+    );
+  }
+
+  getCharacterDetail(characterId: number) {
+    return this.http.get<Character>(
+      `https://rickandmortyapi.com/api/character/${characterId}`,
     );
   }
 }
