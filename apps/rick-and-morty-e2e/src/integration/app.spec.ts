@@ -1,13 +1,11 @@
-import { getGreeting } from '../support/app.po';
-
 describe('rick-and-morty', () => {
-  beforeEach(() => cy.visit('/'));
+  it('should navigate to characters list', () => {
+    cy.visit('/');
+    cy.location('pathname').should('equal', '/characters-list');
+  });
 
-  it('should display welcome message', () => {
-    // Custom command example, see `../support/commands.ts` file
-    cy.login('my-email@something.com', 'myPassword');
-
-    // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome rick-and-morty');
+  it('should navigate to the not found page', () => {
+    cy.visit('/made-up-url')
+    cy.location('pathname').should('equal', '/page-not-found');
   });
 });

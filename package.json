@@ -7,7 +7,9 @@
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "e2e": "nx e2e rick-and-morty-e2e --parallel",
+    "e2e:watch": "nx e2e rick-and-morty-e2e --watch"
   },
   "private": true,
   "dependencies": {
