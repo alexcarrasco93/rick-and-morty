@@ -1,8 +1,9 @@
+<workspace-characters-filters (filter)="filterCharacters($event)"></workspace-characters-filters>
 <div class="grid">
-  <workspace-character-card *ngFor="let character of characters" [character]="character"></workspace-character-card>
+  <workspace-character-card *ngFor="let character of characters" [character]="character"
+    (action)="characterDetail(character.id)"></workspace-character-card>
 </div>
 <div class="buttons">
   <button class="controlButton" (click)="previousPage()"><</button>
   <button class="controlButton" (click)="nextPage()">></button>
 </div>
-<button class="controlButton" (click)="filterCharactersByName('Rick Sanchez')">FILTRAR</button>

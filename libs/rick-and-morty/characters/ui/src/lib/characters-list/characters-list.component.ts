@@ -22,6 +22,9 @@ export class CharactersListComponent {
   @Output()
   filter = new EventEmitter<CharactersFilters>();
 
+  @Output()
+  detail = new EventEmitter<number>();
+
   nextPage() {
     this.next.emit();
   }
@@ -30,7 +33,11 @@ export class CharactersListComponent {
     this.prev.emit();
   }
 
-  filterCharactersByName(name: string) {
-    this.filter.emit({ name });
+  filterCharacters(filters: CharactersFilters) {
+    this.filter.emit(filters);
+  }
+
+  characterDetail(characterId: number) {
+    this.detail.emit(characterId);
   }
 }

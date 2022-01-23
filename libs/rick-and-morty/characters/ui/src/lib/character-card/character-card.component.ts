@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Character } from '@workspace/rick-and-morty/characters/ui-models';
 
 @Component({
@@ -9,4 +9,11 @@ import { Character } from '@workspace/rick-and-morty/characters/ui-models';
 export class CharacterCardComponent {
   @Input()
   character?: Character;
+
+  @Output()
+  action = new EventEmitter<unknown>();
+
+  doAction() {
+    this.action.emit();
+  }
 }

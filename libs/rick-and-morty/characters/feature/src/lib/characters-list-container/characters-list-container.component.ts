@@ -32,4 +32,8 @@ export class CharactersListContainerComponent implements OnInit {
   filterCharacters(filters: CharactersFilters) {
     this.store.dispatch(CharactersActions.filterCharacters({ filters }));
   }
+
+  goToCharacterDetail(characterId: number) {
+    console.log(characterId);
+  }
 }
