@@ -26,6 +26,11 @@ export const getPage = createSelector(
   (state: State) => state.page
 );
 
+export const getTotalPage = createSelector(
+  getCharactersState,
+  (state: State) => state.totalPages
+);
+
 export const charactersViewModel = createSelector(
   getAllCharacters,
   (characters) => ({

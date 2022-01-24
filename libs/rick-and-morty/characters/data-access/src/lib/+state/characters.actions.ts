@@ -21,7 +21,7 @@ export const filterCharacters = createAction(
 
 export const loadCharactersSuccess = createAction(
   '[Characters/API] Load Characters Success',
-  props<{ characters: Character[]; totalPages: number }>()
+  props<{ characters: Character[]; page: number; totalPages: number }>()
 );
 
 export const loadCharactersFailure = createAction(

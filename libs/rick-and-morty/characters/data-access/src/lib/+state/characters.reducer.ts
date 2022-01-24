@@ -40,19 +40,18 @@ const charactersReducer = createReducer(
   on(CharactersActions.loadNextCharacters, (state) => ({
     ...state,
     loaded: false,
-    page: state.page < state.totalPages ? state.page + 1 : state.page,
   })),
   on(CharactersActions.loadPrevCharacters, (state) => ({
     ...state,
     loaded: false,
-    page: state.page > 1 ? state.page - 1 : state.page,
   })),
   on(
     CharactersActions.loadCharactersSuccess,
-    (state, { characters, totalPages }) => ({
+    (state, { characters, page, totalPages }) => ({
       ...state,
       characters,
       loaded: true,
+      page,
       totalPages,
     })
   ),

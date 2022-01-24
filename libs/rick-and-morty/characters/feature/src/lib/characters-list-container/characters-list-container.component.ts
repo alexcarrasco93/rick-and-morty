@@ -35,6 +35,6 @@ export class CharactersListContainerComponent implements OnInit {
   }
 
   goToCharacterDetail(characterId: number) {
-    this.router.navigate(['/character-detail', characterId])
+    this.router.navigate(['/character-detail', characterId]);
   }
 }
