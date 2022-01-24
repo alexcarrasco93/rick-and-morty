@@ -106,14 +106,20 @@ export class CharactersEffects {
       ofType(CharactersActions.filterCharacters),
       concatLatestFrom(() => this.store.select(CharactersSelectors.getPage)),
       exhaustMap(([{ filters }, page]) =>
-        this.charactersService.getAllCharacters(page, filters).pipe(
-          map((response) =>
-            CharactersActions.loadCharactersSuccess({
+        this.charactersService.getAllCharacters(1, filters).pipe(
+          map((response) => {
+            this.router.navigate([], {
+              relativeTo: this.route,
+              queryParams: {
+                page,
+              },
+            });
+            return CharactersActions.loadCharactersSuccess({
               characters: response.results,
-              page,
+              page: 1,
               totalPages: response.info.pages,
-            })
-          ),
+            });
+          }),
           catchError((error) =>
             of(CharactersActions.loadCharactersFailure({ error }))
           )
