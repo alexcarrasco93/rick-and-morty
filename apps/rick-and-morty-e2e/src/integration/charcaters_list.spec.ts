@@ -1,5 +1,6 @@
 import getAllCharacters1 from '../fixtures/characters-list/getAllCharacters1.json';
 import getAllCharacters2 from '../fixtures/characters-list/getAllCharacters2.json';
+import getAllCharacters10 from '../fixtures/characters-list/getAllCharacters10.json';
 import getCharacterDetail from '../fixtures/characters-list/getCharacterDetail.json';
 import getFilteredCharacters from '../fixtures/characters-list/getFilteredCharacters.json';
 
@@ -54,13 +55,50 @@ describe('charcaters list', () => {
   });
 
   it('should filter Rick Sanchez characters', () => {
-    cy.intercept('GET', 'https://rickandmortyapi.com/api/character?page=*&name=*', {
-      statusCode: 200,
-      body: getFilteredCharacters,
-    }).as('getFilteredCharacters');
+    cy.intercept(
+      'GET',
+      'https://rickandmortyapi.com/api/character?page=*&name=*',
+      {
+        statusCode: 200,
+        body: getFilteredCharacters,
+      }
+    ).as('getFilteredCharacters');
     cy.get('input').type('Rick Sanchez');
-    cy.wait('@getFilteredCharacters').its('response.statusCode').should('eq', 200);
-    cy.get('workspace-character-card').first().contains('Rick Sanchez').should('exist')
-    cy.get('workspace-character-card').last().contains('Rick Sanchez').should('exist')
+    cy.wait('@getFilteredCharacters')
+      .its('response.statusCode')
+      .should('eq', 200);
+    cy.get('workspace-character-card')
+      .first()
+      .contains('Rick Sanchez')
+      .should('exist');
+    cy.get('workspace-character-card')
+      .last()
+      .contains('Rick Sanchez')
+      .should('exist');
+  });
+
+  it('should be able to navigate by page with the url', () => {
+    cy.intercept('GET', 'https://rickandmortyapi.com/api/character?page=*', {
+      statusCode: 200,
+      body: getAllCharacters10,
+    }).as('getAllCharacters10');
+    cy.visit('/characters-list?page=10');
+    cy.wait('@getAllCharacters10').its('response.statusCode').should('eq', 200);
+    cy.get('workspace-character-card')
+      .first()
+      .contains("Jessica's Friend")
+      .should('exist');
+  });
+
+  it('should show a non exist page message when navigating to a non existing page', () => {
+    cy.intercept('GET', 'https://rickandmortyapi.com/api/character?page=*', {
+      statusCode: 404,
+      body: { error: 'There is nothing here' },
+    }).as('getAllCharacters10');
+    cy.visit('/characters-list?page=100');
+    cy.wait('@getAllCharacters10').its('response.statusCode').should('eq', 404);
+    cy.get('workspace-characters-list-container')
+      .contains('This characters list page does not exist')
+      .should('exist');
   });
 });

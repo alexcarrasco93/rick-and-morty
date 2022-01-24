@@ -12,35 +12,31 @@ import * as CharactersActions from './characters.actions';
 export class CharactersEffects {
   init$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(
-        CharactersActions.eneterCharactersPage
-        // CharactersActions.loadNextCharacters
-      ),
+      ofType(CharactersActions.eneterCharactersPage),
       concatLatestFrom(() => this.store.select(CharactersSelectors.getPage)),
-      exhaustMap(([, page]) =>
-        this.charactersService
-          .getAllCharacters(
-            Number(this.route.snapshot.queryParams['page']) || page
-          )
+      exhaustMap(([, page]) => {
+        const currentPage = Number(this.route.snapshot.queryParams['page']);
+        return this.charactersService
+          .getAllCharacters(currentPage || page)
           .pipe(
             map((response) => {
               this.router.navigate([], {
                 relativeTo: this.route,
                 queryParams: {
-                  page: Number(this.route.snapshot.queryParams['page']) || page,
+                  page: currentPage || page,
                 },
               });
               return CharactersActions.loadCharactersSuccess({
                 characters: response.results,
-                page: Number(this.route.snapshot.queryParams['page']) || page,
+                page: currentPage || page,
                 totalPages: response.info.pages,
               });
             }),
             catchError((error) =>
               of(CharactersActions.loadCharactersFailure({ error }))
             )
-          )
-      )
+          );
+      })
     )
   );
 
