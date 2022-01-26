@@ -1,6 +1,6 @@
 # RickAndMorty
 
-HAUFE Technical Challenge: Frontend
+This is a project using Nx.
 
 ## Development server
 
