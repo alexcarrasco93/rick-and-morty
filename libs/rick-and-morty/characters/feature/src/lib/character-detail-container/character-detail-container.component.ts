@@ -5,6 +5,7 @@ import {
   CharactersActions,
   CharactersSelectors,
 } from '@workspace/rick-and-morty/characters/data-access';
+import { APP_ROUTES } from '@workspace/rick-and-morty/shared/util/models';
 
 @Component({
   selector: 'workspace-character-detail-container',
@@ -28,6 +29,8 @@ export class CharacterDetailContainerComponent implements OnInit {
   }
 
   goBackToCharactersList() {
-    this.router.navigate(['/characters-list'])
+    this.router.navigate([
+      APP_ROUTES.LIBS.RICK_AND_MORTY.CHARACTERS.LIST.fullPath,
+    ]);
   }
 }
