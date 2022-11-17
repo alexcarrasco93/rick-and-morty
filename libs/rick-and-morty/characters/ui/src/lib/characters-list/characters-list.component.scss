@@ -1,22 +1,35 @@
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 20px;
-  align-items: stretch;
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/variables' as v;
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/mixins' as m;
+$selector: "c-characters-list";
+$c: "." + $selector;
+
+#{$c} {
+  &__buttons {
+    margin: 20px;
+    display: flex;
+    gap: 1rem;
+    justify-content: center
   }
-.grid > article {
-  border: 1px solid #ccc;
-  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
-}
-.grid > article img {
-  max-width: 100%;
-}
 
-.buttons {
-  text-align: center;
-  margin: 20px;
-}
+  &__controlButton {
+    @include m.btn(v.$primary, v.$white);
+    padding: 10px;
+    border-radius: 1rem;
+  }
 
-.controlButton {
-  padding: 10px;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+    align-items: stretch;
+  }
+
+  &__grid>article {
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
+  }
+
+  &__grid>article img {
+    max-width: 100%;
+  }
 }

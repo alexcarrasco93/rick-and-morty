@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
 
 @Component({
-  selector: 'workspace-characters-filters',
+  selector: 'c-characters-filters',
   templateUrl: './characters-filters.component.html',
   styleUrls: ['./characters-filters.component.scss'],
 })

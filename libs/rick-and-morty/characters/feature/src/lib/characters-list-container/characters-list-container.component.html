@@ -1,7 +1,7 @@
 <div *ngIf="charactersViewModel$ | async as charactersViewModel">
-  <workspace-characters-list *ngIf="charactersViewModel.characters.length > 0; else charactersPageNoExist" [characters]="charactersViewModel.characters" (next)="requestNextCharacters()"
+  <c-characters-list *ngIf="charactersViewModel.characters.length > 0; else charactersPageNoExist" [characters]="charactersViewModel.characters" (next)="requestNextCharacters()"
     (prev)="requestPreviousCharacters()" (filter)="filterCharacters($event)" (detail)="goToCharacterDetail($event)">
-  </workspace-characters-list>
+  </c-characters-list>
   <ng-template #charactersPageNoExist>
     <div>
       <h2>This characters list page does not exist</h2>

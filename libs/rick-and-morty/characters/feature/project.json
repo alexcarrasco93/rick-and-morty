@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/rick-and-morty/characters/feature",
   "sourceRoot": "libs/rick-and-morty/characters/feature/src",
-  "prefix": "workspace",
+  "prefix": "c",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",

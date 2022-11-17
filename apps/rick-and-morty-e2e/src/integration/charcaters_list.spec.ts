@@ -16,7 +16,7 @@ describe('charcaters list', () => {
   });
 
   it('should show Rick Sanchez and be able to got to the next page and show Aqua Morty', () => {
-    cy.get('workspace-character-card')
+    cy.get('c-character-card')
       .first()
       .contains('Rick Sanchez')
       .should('exist');
@@ -26,7 +26,7 @@ describe('charcaters list', () => {
     }).as('getAllCharacters2');
     cy.get('.buttons').contains('>').click();
     cy.wait('@getAllCharacters2').its('response.statusCode').should('eq', 200);
-    cy.get('workspace-character-card')
+    cy.get('c-character-card')
       .first()
       .contains('Aqua Morty')
       .should('exist');
@@ -37,18 +37,18 @@ describe('charcaters list', () => {
       statusCode: 200,
       body: getCharacterDetail,
     }).as('getCharacterDetail');
-    cy.get('workspace-character-card').first().contains('Rick Sanchez').click();
+    cy.get('c-character-card').first().contains('Rick Sanchez').click();
     cy.wait('@getCharacterDetail').its('response.statusCode').should('eq', 200);
-    cy.get('workspace-character-detail-container')
+    cy.get('c-character-detail-container')
       .contains('Rick Sanchez')
       .should('exist');
-    cy.get('workspace-character-detail-container')
+    cy.get('c-character-detail-container')
       .contains('Alive')
       .should('exist');
-    cy.get('workspace-character-detail-container')
+    cy.get('c-character-detail-container')
       .contains('Human')
       .should('exist');
-    cy.get('workspace-character-detail-container')
+    cy.get('c-character-detail-container')
       .contains('Earth')
       .should('exist');
     cy.get('button').contains('Go back to the list').should('exist').click();
@@ -67,11 +67,11 @@ describe('charcaters list', () => {
     cy.wait('@getFilteredCharacters')
       .its('response.statusCode')
       .should('eq', 200);
-    cy.get('workspace-character-card')
+    cy.get('c-character-card')
       .first()
       .contains('Rick Sanchez')
       .should('exist');
-    cy.get('workspace-character-card')
+    cy.get('c-character-card')
       .last()
       .contains('Rick Sanchez')
       .should('exist');
@@ -84,7 +84,7 @@ describe('charcaters list', () => {
     }).as('getAllCharacters10');
     cy.visit('/characters-list?page=10');
     cy.wait('@getAllCharacters10').its('response.statusCode').should('eq', 200);
-    cy.get('workspace-character-card')
+    cy.get('c-character-card')
       .first()
       .contains("Jessica's Friend")
       .should('exist');
@@ -97,7 +97,7 @@ describe('charcaters list', () => {
     }).as('getAllCharacters10');
     cy.visit('/characters-list?page=100');
     cy.wait('@getAllCharacters10').its('response.statusCode').should('eq', 404);
-    cy.get('workspace-characters-list-container')
+    cy.get('c-characters-list-container')
       .contains('This characters list page does not exist')
       .should('exist');
   });

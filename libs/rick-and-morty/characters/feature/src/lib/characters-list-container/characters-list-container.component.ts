@@ -9,7 +9,7 @@ import { CharactersFilters } from '@workspace/rick-and-morty/characters/ui-model
 import { APP_ROUTES } from '@workspace/rick-and-morty/shared/util/models';
 
 @Component({
-  selector: 'workspace-characters-list-container',
+  selector: 'c-characters-list-container',
   templateUrl: './characters-list-container.component.html',
   styleUrls: ['./characters-list-container.component.scss'],
 })

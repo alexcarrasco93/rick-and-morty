@@ -8,7 +8,7 @@ import {
 import { APP_ROUTES } from '@workspace/rick-and-morty/shared/util/models';
 
 @Component({
-  selector: 'workspace-character-detail-container',
+  selector: 'c-character-detail-container',
   templateUrl: './character-detail-container.component.html',
   styleUrls: ['./character-detail-container.component.scss'],
 })

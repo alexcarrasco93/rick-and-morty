@@ -1,6 +1,6 @@
-<div class="card" (click)="doAction()">
-  <img [src]="character?.image" [alt]="character?.name" style="width:100%">
-  <div class="container">
+<div class="c-character-card__card" (click)="doAction()">
+  <img class="c-character-card__img" [src]="character?.image" [alt]="character?.name" style="width:100%">
+  <div class="c-character-card__container">
     <h4><b>{{character?.name}}</b></h4>
     <p>{{character?.species}}</p>
   </div>

@@ -1,0 +1,67 @@
+@use 'variables' as v;
+
+/** Media Queries **/
+@mixin phone {
+    @media (min-width: v.$phone) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: v.$tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: v.$desktop) {
+        @content;
+    }
+}
+
+
+@mixin btn($color, $txt) {
+    background-color: $color;
+    font-size: 2rem;
+    padding: 1.2rem 4rem;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: $txt;
+    text-decoration: none;
+    transition: background-color .3s ease;
+    border: none;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($color, 10);
+    }
+
+    @include tablet {
+        width: auto;
+        display: inline-block;
+
+    }
+}
+
+@mixin grid($columns, $gap) {
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin headingBorder($colorText, $colorLine) {
+    font-size: 3.6rem;
+    display: inline-block;
+    color: $colorText;
+
+    &::after {
+        content: '';
+        background-color: $colorLine;
+        height: 1rem;
+        width: calc(100% + 1rem);
+        display: block;
+        margin: -1.9rem 0 0 0;
+    }
+}

@@ -1,0 +1,9 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.header {
+  padding-top: 2rem;
+    &__img {
+      margin-inline: auto;
+    }
+}

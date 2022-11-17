@@ -1,14 +1,19 @@
-<button type="button" (click)="goBackToCharactersList()">Go back to the list</button>
-<ng-container *ngIf="characterDetailViewModel$ | async as characterDetailViewModel">
-  <div *ngIf="characterDetailViewModel.character as character; else characterNotFoundTmpl">
-    <b>Name:</b> {{character?.name}} <br>
-    <b>Status:</b> {{character?.status}} <br>
-    <b>Species:</b> {{character?.species}} <br>
-    <b>Origin:</b> {{character?.origin?.name}}
-  </div>
-  <ng-template #characterNotFoundTmpl>
-    <div>
-      Character Not Found
+<div class="c-character-detail__container">
+  <button class="c-character-detail__btn-back" type="button" (click)="goBackToCharactersList()">Go back to the list</button>
+  <ng-container *ngIf="characterDetailViewModel$ | async as characterDetailViewModel">
+    <div class="c-character-detail__container-content" *ngIf="characterDetailViewModel.character as character; else characterNotFoundTmpl">
+      <img class="c-character-detail__img" [src]="character?.image" alt="character image">
+      <div class="c-character-detail__info-content">
+        <p class="c-character-detail__info"><span class="c-character-detail__title">Name:</span> {{character?.name}}</p>
+        <p class="c-character-detail__info"><span class="c-character-detail__title">Status:</span> {{character?.status}}</p>
+        <p class="c-character-detail__info"><span class="c-character-detail__title">Species:</span> {{character?.species}}</p>
+        <p class="c-character-detail__info"><span class="c-character-detail__title">Origin:</span> {{character?.origin?.name}}</p>
+      </div>
     </div>
-  </ng-template>
-</ng-container>
+    <ng-template #characterNotFoundTmpl>
+      <div>
+        Character Not Found
+      </div>
+    </ng-template>
+  </ng-container>
+</div>

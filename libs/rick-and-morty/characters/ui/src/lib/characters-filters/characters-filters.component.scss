@@ -1,6 +1,32 @@
-input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/variables' as v;
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/mixins' as m;
+$selector: "c-characters-filter";
+$c: "." + $selector;
+
+#{$c} {
+  &__filters {
+    margin-top: 4rem;
+    @include m.tablet {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      justify-content: center;
+    }
+  }
+
+  &__label {
+    font-weight: 700;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+
+    @include m.tablet {
+      width: 30rem;
+    }
+  }
 }

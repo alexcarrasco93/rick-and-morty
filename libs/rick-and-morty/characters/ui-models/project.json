@@ -2,7 +2,7 @@
   "projectType": "library",
   "root": "libs/rick-and-morty/characters/ui-models",
   "sourceRoot": "libs/rick-and-morty/characters/ui-models/src",
-  "prefix": "workspace",
+  "prefix": "c",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",

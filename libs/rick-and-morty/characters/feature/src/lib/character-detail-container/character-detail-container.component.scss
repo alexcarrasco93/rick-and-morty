@@ -1,0 +1,39 @@
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/variables' as v;
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/mixins' as m;
+$selector: "c-character-detail";
+$c: "." + $selector;
+
+#{$c} {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__btn-back {
+    @include m.btn(v.$primary, v.$white);
+    border-radius: 1rem;
+    margin: 2rem 0 2rem 0;
+  }
+
+  &__container-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+
+    @include m.tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__img {}
+
+  &__info-content {}
+
+  &__info {}
+
+  &__title {
+    font-weight: 700;
+  }
+}

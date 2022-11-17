@@ -1,9 +1,9 @@
-<workspace-characters-filters (filter)="filterCharacters($event)"></workspace-characters-filters>
-<div class="grid">
-  <workspace-character-card *ngFor="let character of characters" [character]="character"
-    (action)="characterDetail(character.id)"></workspace-character-card>
+<c-characters-filters (filter)="filterCharacters($event)"></c-characters-filters>
+<div class="c-characters-list__grid">
+  <c-character-card *ngFor="let character of characters" [character]="character"
+    (action)="characterDetail(character.id)"></c-character-card>
 </div>
-<div class="buttons">
-  <button type="button" class="controlButton" (click)="previousPage()"><</button>
-  <button type="button" class="controlButton" (click)="nextPage()">></button>
+<div class="c-characters-list__buttons">
+  <button type="button" class="c-characters-list__controlButton" (click)="previousPage()"><</button>
+  <button type="button" class="c-characters-list__controlButton" (click)="nextPage()">></button>
 </div>
