@@ -1,0 +1,10 @@
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/variables' as v;
+@use '../../../../../../../apps/rick-and-morty/src/scss/base/mixins' as m;
+$selector: "c-characters-list-container";
+$c: "." + $selector;
+
+#{$c} {
+  &__container {
+    margin-bottom: 4rem;
+  }
+}

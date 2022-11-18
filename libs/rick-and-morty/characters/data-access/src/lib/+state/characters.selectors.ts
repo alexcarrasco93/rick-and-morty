@@ -31,10 +31,17 @@ export const getTotalPage = createSelector(
   (state: State) => state.totalPages
 );
 
+export const getFilters = createSelector(
+  getCharactersState,
+  (state: State) => state.filters
+);
+
 export const charactersViewModel = createSelector(
   getAllCharacters,
-  (characters) => ({
+  getFilters,
+  (characters, filters) => ({
     characters,
+    filters
   })
 );
 
@@ -45,7 +52,9 @@ export const getCharacterDetail = createSelector(
 
 export const characterDetailViewModel = createSelector(
   getCharacterDetail,
-  (character) => ({
+  getFilters,
+  (character, filters) => ({
     character,
+    filters
   })
 );

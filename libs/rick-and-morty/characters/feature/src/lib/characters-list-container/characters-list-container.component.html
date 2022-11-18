@@ -1,6 +1,8 @@
-<div *ngIf="charactersViewModel$ | async as charactersViewModel">
-  <c-characters-list *ngIf="charactersViewModel.characters.length > 0; else charactersPageNoExist" [characters]="charactersViewModel.characters" (next)="requestNextCharacters()"
-    (prev)="requestPreviousCharacters()" (filter)="filterCharacters($event)" (detail)="goToCharacterDetail($event)">
+<div *ngIf="charactersViewModel$ | async as charactersViewModel" class="c-characters-list-container__container">
+  <c-characters-list *ngIf="charactersViewModel.characters.length > 0; else charactersPageNoExist"
+    [characters]="charactersViewModel.characters" [filters]="charactersViewModel.filters"
+    (next)="requestNextCharacters()" (prev)="requestPreviousCharacters()" (filter)="filterCharacters($event)"
+    (detail)="goToCharacterDetail($event)">
   </c-characters-list>
   <ng-template #charactersPageNoExist>
     <div>

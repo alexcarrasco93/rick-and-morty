@@ -114,6 +114,7 @@ export class CharactersEffects {
               characters: response.results,
               page: 1,
               totalPages: response.info.pages,
+              filters
             });
           }),
           catchError((error) =>

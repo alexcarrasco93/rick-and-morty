@@ -13,6 +13,9 @@ export class CharactersListComponent {
   @Input()
   characters: Character[] = [];
 
+  @Input()
+  filters?: CharactersFilters;
+
   @Output()
   next = new EventEmitter<unknown>();
 

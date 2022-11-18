@@ -1,6 +1,6 @@
 import { EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { createReducer, on, Action } from '@ngrx/store';
-import { Character } from '@workspace/rick-and-morty/characters/ui-models';
+import { Character, CharactersFilters } from '@workspace/rick-and-morty/characters/ui-models';
 
 import * as CharactersActions from './characters.actions';
 
@@ -13,6 +13,7 @@ export interface State {
   totalPages: number;
   page: number;
   character?: Character;
+  filters?: CharactersFilters;
 }
 
 export interface CharactersPartialState {
@@ -47,12 +48,13 @@ const charactersReducer = createReducer(
   })),
   on(
     CharactersActions.loadCharactersSuccess,
-    (state, { characters, page, totalPages }) => ({
+    (state, { characters, page, totalPages, filters }) => ({
       ...state,
       characters,
       loaded: true,
       page,
       totalPages,
+      filters: filters ?? state.filters
     })
   ),
   on(CharactersActions.loadCharactersFailure, (state, { error }) => ({
